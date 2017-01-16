@@ -42,5 +42,18 @@ function query(sql, cb){
 // query('SELECT * FROM "User"',
 // (result) => console.log(result.rows));
 
-query('DELETE FROM "User" WHERE id = 5',
-(result) => console.log(result.rowCount));
+// query('DELETE FROM "User" WHERE id = 5',
+// (result) => console.log(result.rowCount));
+
+function checkSignIn(username, password){
+  var sql = `SELECT * FROM "User" WHERE username = '${username}'
+  AND password = '${password}'`;
+  query(sql, result => {
+    if(result.rowCount == 1){
+      return console.log('Dang nhap thanh cong');
+    }
+    console.log('Dang nhap that bai');
+  })
+}
+
+checkSignIn('khoapham11', '123');
